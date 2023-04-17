@@ -12,15 +12,17 @@ export 'support/code_country.dart';
 export 'country_selection_theme.dart';
 
 class CountryListPick extends StatefulWidget {
-  CountryListPick(
-      {this.onChanged,
-      this.initialSelection,
-      this.appBar,
-      this.pickerBuilder,
-      this.countryBuilder,
-      this.theme,
-      this.useUiOverlay = true,
-      this.useSafeArea = false});
+  CountryListPick({
+    this.onChanged,
+    this.initialSelection,
+    this.appBar,
+    this.pickerBuilder,
+    this.countryBuilder,
+    this.theme,
+    this.useUiOverlay = true,
+    this.useSafeArea = false,
+    this.countryTextStyle,
+  });
 
   final String? initialSelection;
   final ValueChanged<CountryCode?>? onChanged;
@@ -32,6 +34,9 @@ class CountryListPick extends StatefulWidget {
       countryBuilder;
   final bool useUiOverlay;
   final bool useSafeArea;
+
+  /// Added
+  final TextStyle? countryTextStyle;
 
   @override
   _CountryListPickState createState() {
@@ -82,7 +87,8 @@ class _CountryListPickState extends State<CountryListPick> {
             selectedItem,
             appBar: widget.appBar ??
                 AppBar(
-                  backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+                  backgroundColor:
+                      Theme.of(context).appBarTheme.backgroundColor,
                   title: Text("Select Country"),
                 ),
             theme: theme,
@@ -125,7 +131,7 @@ class _CountryListPickState extends State<CountryListPick> {
                   Flexible(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Text(selectedItem.toString()),
+                      child: Text(selectedItem.toString(), style: widget.countryTextStyle),
                     ),
                   ),
                 if (widget.theme?.isShowTitle ?? true == true)
