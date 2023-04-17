@@ -138,7 +138,7 @@ class _CountryListPickState extends State<CountryListPick> {
                   Flexible(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                      child: Text(selectedItem!.toCountryStringOnly(), style: widget.countryTextStyle),
+                      child: SizedBox(child: Text(selectedItem!.toCountryStringOnly(), style: widget.countryTextStyle), width: MediaQuery.of(context).size.width * 0.82,),
                     ),
                   ),
                 if (widget.theme?.isDownIcon ?? true == true)
